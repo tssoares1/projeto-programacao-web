@@ -40,14 +40,14 @@ public class TurmaController implements TurmaController_interface {
         return turmasDto;
     }
 
-    @GetMapping("/{turmaId}")
+    @GetMapping("/id/{turmaId}")
     @ResponseStatus(code = HttpStatus.OK)
     public TurmaDTO buscarTurma(@PathVariable int turmaId) {
         TurmaBO turmaFind = turmaService.findById(turmaId);
         return TurmaMapper.toDTO(turmaFind);
     }
 
-    @GetMapping("/{turmaPeriodo}")
+    @GetMapping("/periodo/{turmaPeriodo}")
     @ResponseStatus(code = HttpStatus.OK)
     public List<TurmaDTO> buscarTumasPorPeriodo(@PathVariable String periodo) {
         List<TurmaBO> turmasFind = turmaService.findByPeriodo(periodo);
@@ -57,7 +57,7 @@ public class TurmaController implements TurmaController_interface {
                 .toList();
     }
 
-    @GetMapping("/{turmaCurso}")
+    @GetMapping("/curso/{turmaCurso}")
     @ResponseStatus(code = HttpStatus.OK)
     public List<TurmaDTO> buscarTumasPorCurso(@PathVariable String curso) {
         List<TurmaBO> turmasFind = turmaService.findByCurso(curso);
@@ -68,7 +68,7 @@ public class TurmaController implements TurmaController_interface {
     }
 
 
-    @DeleteMapping("/{turmaId}")
+    @DeleteMapping("/id/{turmaId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void removerTurma(@PathVariable int turmaId) {
         turmaService.deleteById(turmaId);
